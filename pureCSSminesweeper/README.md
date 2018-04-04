@@ -8,7 +8,7 @@ I analysed the [pure CSS minesweeper](https://codepen.io/bali_balo/pen/BLJONk) g
 
 ## Method of Analysis
 
-The game is writted in Haml and SCSS which are both just user friendly ways of writing HTML and CSS respectively. But they also provide some additional functionality, e.g. variables in SCSS which are absent in CSS. The variables are replaced with their value when the actual CSS is compiled. I wanted to make sure that I was studying the pure CSS and not SCSS, so I looked only at the compiled CSS and that is what I will be discussing today. I also used [this](https://github.com/imsun/CSS-Minesweeper) CSS minesweeper game to get a better understanding of the game. I found it helpful to consider a simpler version of the game comprising of a minefield of 2x1 boxes.
+The game is writted in Haml and SCSS which are both just user friendly ways of writing HTML and CSS respectively. But they also provide some additional functionality, e.g. variables in SCSS which are absent in CSS. The variables are replaced with their value when the actual CSS is compiled. I wanted to make sure that I was studying the pure CSS and not SCSS, so I looked only at the compiled CSS and that is what I will be discussing today. I also used [this](https://github.com/imsun/CSS-Minesweeper) CSS minesweeper game to get a better understanding of the game. I found it helpful to consider a simpler version of the game comprising of a minefield of 2x1 boxes. It's also on codepen [here](https://codepen.io/tinkrmind/pen/NYLvzq).
 
 <p align="center">
   <img width=600px  src="https://i.imgur.com/mU7EwEd.jpg">
@@ -85,7 +85,12 @@ The [tilde selector](https://stackoverflow.com/questions/10782054/what-does-the-
 
 Here we select all grid flags that appear after a checked #modeFlag id(the action selector) and make them visible. If the #modeFlag id is not checked, then none of the grid flags will be selected and therefore will remain invisible, revealing the mine type check-boxes underneath.
 
-Mine positions are hard-coded in the compiled CSS, but the SCSS offers a random() function which is used to set the mine positions randomly in codepen.
+Mine positions are hard-coded in the compiled CSS, but the SCSS offers a random() function which is used to set the mine positions randomly in codepen. The numbers behind each box is a simple label. They are added from CSS like content in the timer, as shown below.
+
+    .grid label:nth-child(2):before {
+      content: "1";
+      color: #0000ff;
+    }
 
 Victory and Defeat are simply buttons at the same location as the grid and are generally hidden. On error or victory condition they are shown. Victory condition for example is if all the flags are on top of mines and none of the others. In case of a simple two box minesweeper the condition looks like this:
 

@@ -1,6 +1,6 @@
 # Hacking the Browser
 
-This is my code repo and blog for [Hacking the Browser] class at ITP, Spring 2018.
+This is my code repo and blog for [Hacking the Browser](www.hackingthebrowser.com) class at ITP, Spring 2018.
 
 # Class Presentation
 

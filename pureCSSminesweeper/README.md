@@ -2,17 +2,23 @@
 
 I analysed the [pure CSS minesweeper](https://codepen.io/bali_balo/pen/BLJONk) game by [Bali Balo](https://codepen.io/bali_balo/) at codepen. It's a wonderful game, which reminds me of windows XP and being a kid. CSS is not generally thought of as a 'programming' language, which makes the code so much more interesting. It uses CSS features in very unintentional manners.
 
+![pureCSSMinesweeper](https://imgur.com/4cCBSa2.png)
+
 ## Method of Analysis
 
-The game is writted in Haml and SCSS which are both just user friendly ways of writing HTML and CSS respectively. But they also provide some additional functionality, e.g. variables in SCSS which are absent in CSS. The variables are replaced with their value when the actual CSS is compiled. I wanted to make sure that I was studying the pure CSS and not SCSS, so I looked only at the compiled CSS and that is what I will be discussing today.
+The game is writted in Haml and SCSS which are both just user friendly ways of writing HTML and CSS respectively. But they also provide some additional functionality, e.g. variables in SCSS which are absent in CSS. The variables are replaced with their value when the actual CSS is compiled. I wanted to make sure that I was studying the pure CSS and not SCSS, so I looked only at the compiled CSS and that is what I will be discussing today. I also used [this](https://github.com/imsun/CSS-Minesweeper) CSS minesweeper game to get a better understanding of the game. I found it helpful to consider a simpler version of the game comprising of a minefield of 2x1 boxes.
+
+![2x1 minesweeper](https://i.imgur.com/mU7EwEd.jpg)
 
 The HTML code is pretty basic, it simply enlists all the elements and gives them id and class that CSS can then modify.
 
-## Analysis of Pure CSS Minesweeper
+## Analysis of the CSS
 
 The minesweeper game can be divided into the following essential components:
 
 ### *Timer*
+
+![Timer](https://imgur.com/ODPV6pe.png)
 
 This is disconnected from all the other game elements and works independently. Many pure CSS timers exist and more or less all of them depend on the animate property of CSS. And they are fairly accurate. The timer on minesweeper was accurate to <5 seconds over two hours(0.07% or 700ppm) typical quartz clocks are 0.001% or 10 ppm accurate.
     * https://codepen.io/toaster99/pen/zNgdgo
@@ -43,13 +49,19 @@ Finally, [animation play state](https://developer.mozilla.org/en-US/docs/Web/CSS
 
 To understand the timer better, I extracted just the timer CSS bits and modified them a bit. The pure CSS timer that resulted can be found [here.](https://codepen.io/tinkrmind/pen/dmmPYy)
 
+![Timer](https://i.imgur.com/COVQz95.png)
+
 ### *Action selector*
+
+![Action Selector](https://imgur.com/Alm9Bm3.png)
 
 Radio buttons to toggle between mining and flagging. These are relatively simple. But are used very cleverly. The two positions are #modeFlag and #modeMine. Since the action selector is radio type check-box, only one can be selected at a time.
 
 ### *Grid*
 
-The main play arena is a field of what amounts to check-boxes. There are in fact two checkboxes for each mine block. One that keeps track of the flags and another that keeps tracks of the clicks. Tey are id'ed #c$ and #f$ for clicks and flags and $ is  anumber from 1 to the total number of boxes.
+![Grid](https://i.imgur.com/wWygJDs.png)
+
+The main play arena is a field of what amounts to check-boxes. There are in fact two checkboxes for each mine block. One that keeps track of the flags and another that keeps tracks of the clicks. They are id'ed #c$ and #f$ for clicks and flags and $ is  anumber from 1 to the total number of boxes.
 
 The [tilde selector](https://stackoverflow.com/questions/10782054/what-does-the-tilde-squiggle-twiddle-css-selector-mean) is used to select particular divs. .a ~ .b will match all b elements that appear next to and after a elements. It's used to show the flag check-boxes when the flag action selector is used in this manner:
 
@@ -85,6 +97,8 @@ Similarly, the end game or error condition is detected when a check-box on a min
 This doesn't get quite as complicated with scale. Instead of having more complicated checks, there are simply more of them. One for every mine.
 
 ### *Counter*
+
+![Counter](https://imgur.com/s2nDh2z.png)
 
 To count the number of remaining flags. CSS has support for [counters](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters), generally used to number headings for example.
 

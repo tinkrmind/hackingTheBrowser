@@ -4,7 +4,7 @@ This is my code repo and blog for [Hacking the Browser](www.hackingthebrowser.co
 
 # Class Presentation
 
-[Pure CSS Minesweeper](https://github.com/tinkrmind/hackingTheBrowser/tree/master/pureCSSminesweeper)
+### [Pure CSS Minesweeper](https://github.com/tinkrmind/hackingTheBrowser/tree/master/pureCSSminesweeper)
 
 # Week 2
 

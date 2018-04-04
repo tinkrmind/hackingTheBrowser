@@ -2,13 +2,17 @@
 
 I analysed the [pure CSS minesweeper](https://codepen.io/bali_balo/pen/BLJONk) game by [Bali Balo](https://codepen.io/bali_balo/) at codepen. It's a wonderful game, which reminds me of windows XP and being a kid. CSS is not generally thought of as a 'programming' language, which makes the code so much more interesting. It uses CSS features in very unintentional manners.
 
-![pureCSSMinesweeper](https://imgur.com/4cCBSa2.png)
+<p align="center">
+  <img width=600px  src="https://imgur.com/4cCBSa2.png">
+</p>
 
 ## Method of Analysis
 
 The game is writted in Haml and SCSS which are both just user friendly ways of writing HTML and CSS respectively. But they also provide some additional functionality, e.g. variables in SCSS which are absent in CSS. The variables are replaced with their value when the actual CSS is compiled. I wanted to make sure that I was studying the pure CSS and not SCSS, so I looked only at the compiled CSS and that is what I will be discussing today. I also used [this](https://github.com/imsun/CSS-Minesweeper) CSS minesweeper game to get a better understanding of the game. I found it helpful to consider a simpler version of the game comprising of a minefield of 2x1 boxes.
 
-![2x1 minesweeper](https://i.imgur.com/mU7EwEd.jpg)
+<p align="center">
+  <img width=600px  src="https://i.imgur.com/mU7EwEd.jpg">
+</p>
 
 The HTML code is pretty basic, it simply enlists all the elements and gives them id and class that CSS can then modify.
 
@@ -18,13 +22,17 @@ The minesweeper game can be divided into the following essential components:
 
 ### *Timer*
 
-![Timer](https://imgur.com/ODPV6pe.png)
+<p align="center">
+  <img width=600px  src="https://imgur.com/ODPV6pe.png">
+</p>
 
 This is disconnected from all the other game elements and works independently. Many pure CSS timers exist and more or less all of them depend on the animate property of CSS. And they are fairly accurate. The timer on minesweeper was accurate to <5 seconds over two hours(0.07% or 700ppm) typical quartz clocks are 0.001% or 10 ppm accurate.
     * https://codepen.io/toaster99/pen/zNgdgo
     * https://codepen.io/stikoo/pen/GpGgdd?editors=1100
 
-![timerAccuracy](https://i.imgur.com/2sdZsEn.jpg)
+<p align="center">
+  <img width=600px  src="https://i.imgur.com/2sdZsEn.jpg">
+</p>
 
 The timer can be thought of as a list of numbers. Most of the list is outside the field of the timer and is therefore not rendered. To show a number, the list is slid up to that number. This is done using animation.
 
@@ -49,17 +57,23 @@ Finally, [animation play state](https://developer.mozilla.org/en-US/docs/Web/CSS
 
 To understand the timer better, I extracted just the timer CSS bits and modified them a bit. The pure CSS timer that resulted can be found [here.](https://codepen.io/tinkrmind/pen/dmmPYy)
 
-![Timer](https://i.imgur.com/COVQz95.png)
+<p align="center">
+  <img width=600px  src="https://i.imgur.com/COVQz95.png">
+</p>
 
 ### *Action selector*
 
-![Action Selector](https://imgur.com/Alm9Bm3.png)
+<p align="center">
+  <img width=600px   src="https://imgur.com/Alm9Bm3.png">
+</p>
 
 Radio buttons to toggle between mining and flagging. These are relatively simple. But are used very cleverly. The two positions are #modeFlag and #modeMine. Since the action selector is radio type check-box, only one can be selected at a time.
 
 ### *Grid*
 
-![Grid](https://i.imgur.com/wWygJDs.png)
+<p align="center">
+  <img width=600px  src="https://imgur.com/8fYeZmd.png">
+</p>
 
 The main play arena is a field of what amounts to check-boxes. There are in fact two checkboxes for each mine block. One that keeps track of the flags and another that keeps tracks of the clicks. They are id'ed #c$ and #f$ for clicks and flags and $ is  anumber from 1 to the total number of boxes.
 
@@ -98,8 +112,9 @@ This doesn't get quite as complicated with scale. Instead of having more complic
 
 ### *Counter*
 
-![Counter](https://imgur.com/s2nDh2z.png)
-
+<p align="center">
+  <img width=600px  src="https://imgur.com/s2nDh2z.png">
+</p>
 To count the number of remaining flags. CSS has support for [counters](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters), generally used to number headings for example.
 
 The total number of mines is hard-coded as the starting position of the counter. The counter is decremented by selecting all the flag checkboxes that are selected and decrementing the counter by one for each.

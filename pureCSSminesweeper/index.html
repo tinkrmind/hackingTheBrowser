@@ -1,0 +1,56 @@
+<html>
+<head>
+  <link rel="stylesheet" href="test.css">
+</head>
+<body>
+
+  <!-- / Match the SCSS variables here -->
+  <form>
+    <input id='c1' type='checkbox'>
+    <input id='f1' type='checkbox'>
+    <input id='c2' type='checkbox'>
+    <input id='f2' type='checkbox'>
+    <input checked id='modeMine' name='mode' type='radio'>
+    <input id='modeFlag' name='mode' type='radio'>
+    <div class='actionSelector'>
+      <label for='modeMine'>
+        ⛏
+      </label>
+      <label for='modeFlag'>
+        🚩
+      </label>
+    </div>
+    <div class='grid'>
+      <label for='c1'></label>
+      <label for='c2'></label>
+      <div class='flags'>
+        <label for='f1'></label>
+        <label for='f2'></label>
+      </div>
+      <button class='error' tabindex='-1' type='reset'>
+        Ooohhh 🙁
+        <br>
+        Click to try again
+      </button>
+      <button class='victory' tabindex='-1' type='reset'>
+        👌👀✔💯💯💯
+        <br>
+        Click to restart
+      </button>
+    </div>
+    <div class='infos'>
+      <div class='counter'></div>
+      <div class='timer'>
+        <div class='digit'></div>
+        <div class='digit'></div>
+        <div class='digit'></div>
+        <div class='separator'></div>
+        <div class='digit'></div>
+        <div class='digit'></div>
+      </div>
+    </div>
+  </form>
+
+
+</body>
+</html>

@@ -1,0 +1,420 @@
+@charset "UTF-8";
+@import "https://fonts.googleapis.com/css?family=Roboto+Mono:700";
+body {
+  min-height: 100vh;
+  padding: 1px;
+  box-sizing: border-box;
+  background: teal url(https://www.hdwallpapers.in/walls/windows_xp_bliss-wide.jpg) center/cover no-repeat;
+  counter-reset: mines 1;
+}
+
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+input {
+  visibility: hidden;
+  position: absolute;
+  top: -99px;
+  left: -99px;
+}
+
+input[id^="f"]:checked {
+  counter-increment: mines -1;
+}
+
+.infos {
+  order: 2;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  width: 500px;
+}
+
+.timer {
+  font-family: "Roboto Sans", monospace;
+  font-size: 0;
+  background: #ccc;
+  border: 1px solid #808080;
+  height: 2.25rem;
+  line-height: 2.25rem;
+  padding: 0 0.5rem;
+}
+
+.timer .separator {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1rem;
+}
+
+.timer .separator:before {
+  content: ":";
+}
+
+@keyframes digit {
+  from {
+    top: 0;
+  }
+  to {
+    top: -1000%;
+  }
+}
+
+@keyframes digitTo6 {
+  from {
+    top: 0;
+  }
+  to {
+    top: -600%;
+  }
+}
+
+@keyframes extend {
+  from {
+    width: 0;
+  }
+  10%,
+  to {
+    width: auto;
+  }
+}
+
+.timer .digit {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  font-size: 1rem;
+}
+
+.timer .digit:before {
+  content: "0";
+  visibility: hidden;
+}
+
+.timer .digit:after {
+  content: "0 \A 1 \A 2 \A 3 \A 4 \A 5 \A 6 \A 7 \A 8 \A 9";
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: digit 1s steps(10) infinite paused;
+}
+
+.timer .digit:nth-last-child(1):after {
+  animation-duration: 10s;
+}
+
+.timer .digit:nth-last-child(2):after {
+  content: "0 \A 1 \A 2 \A 3 \A 4 \A 5";
+  animation-name: digitTo6;
+  animation-timing-function: steps(6);
+  animation-duration: 60s;
+}
+
+.timer .digit:nth-last-child(4):after {
+  animation-duration: 600s;
+}
+
+.timer .digit:nth-last-child(5):after {
+  animation-duration: 6000s;
+}
+
+.timer .digit:nth-last-child(6) {
+  width: 0;
+  animation: extend 60000s steps(1) infinite paused;
+}
+
+.timer .digit:nth-last-child(6):after {
+  animation-duration: 60000s;
+}
+
+.counter {
+  display: inline-block;
+  border: 1px solid #808080;
+  background: #ccc;
+  padding: 0 0.5rem;
+  font-size: 1.25rem;
+  font-family: "Roboto Sans", monospace;
+  height: 2.25rem;
+  line-height: 2.25rem;
+}
+
+.counter:before {
+  content: "🤔";
+  font-size: 1rem;
+  margin-right: 0.5em;
+}
+
+.counter:after {
+  content: counter(mines);
+}
+
+input[id^="c"]:checked ~ .infos .timer .digit, input[id^="c"]:checked ~ .infos .timer .digit:after {
+  animation-play-state: running;
+}
+
+.actionSelector {
+  order: 1;
+  text-align: center;
+  margin: 10px;
+  cursor: default;
+}
+
+.actionSelector label {
+  display: inline-block;
+  position: relative;
+  width: 1.8em;
+  height: 1.8em;
+  text-align: center;
+  line-height: 1.8em;
+  cursor: pointer;
+}
+
+.actionSelector label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: scale(0);
+  border-radius: 50%;
+  background: rgba(210, 210, 210, 0.8);
+  box-sizing: border-box;
+  border: 1px solid #808080;
+  transition: transform 0.3s, border-radius 0.3s;
+  transition-timing-function: cubic-bezier(0.75, 1.75, 0.75, 0.75);
+  z-index: -1;
+}
+
+#modeMine:checked ~ .actionSelector label[for="modeMine"],
+#modeFlag:checked ~ .actionSelector label[for="modeFlag"] {
+  cursor: default;
+}
+
+#modeMine:checked ~ .actionSelector label[for="modeMine"]:before,
+#modeFlag:checked ~ .actionSelector label[for="modeFlag"]:before {
+  transform: scale(1);
+  border-radius: 2px;
+}
+
+.grid {
+  order: 3;
+  user-select: none;
+  position: relative;
+  margin: 10px auto;
+  width: 2em;
+  height: 1em;
+  font-size: 250px;
+  display: flex;
+  flex-flow: row wrap;
+  border: solid #808080;
+  border-width: 1px 0 0 1px;
+}
+
+.grid label {
+  display: block;
+  position: relative;
+  width: 1em;
+  height: 1em;
+  background: #c0c0c0;
+  box-sizing: border-box;
+  border: solid #808080;
+  border-width: 0 1px 1px 0;
+  flex: 0 0 50%;
+  overflow: hidden;
+  cursor: pointer;
+  pointer-events: none;
+}
+
+.grid label:before {
+  content: "";
+  font-size: 0.9rem;
+  font-family: "Roboto Mono", monospace;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.grid label:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background: #c0c0c0;
+  border: 2px outset #ececec;
+  font-size: 0.75rem;
+  text-align: center;
+  pointer-events: auto;
+}
+
+.grid label:active:after {
+  background: #bdbdbd;
+  border: solid #999;
+  border-width: 2px 0 0 2px;
+}
+
+.grid .flags {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.grid .error,
+.grid .victory {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 0, 0, 0.75);
+  color: #fff;
+  font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+  border: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.grid .victory {
+  background: rgba(0, 10, 0, 0.75);
+}
+
+#modeFlag:checked ~ .grid .flags {
+  visibility: visible;
+}
+
+#modeMine:checked ~ .grid:active ~ .infos .counter:before {
+  content: "😓" !important;
+}
+
+input[id^=f]:checked ~ .infos .counter:before {
+  content: "😐";
+}
+
+input[id^=f]:checked ~ input[id^=f]:checked ~ .infos .counter:before {
+  content: "😏";
+}
+
+input[id^=f]:checked ~ .infos .counter:before {
+  content: "🙂";
+}
+
+input[id^=f]:checked ~ .infos .counter:before {
+  content: "😊";
+}
+
+input[id^=f]:checked ~ .infos .counter:before {
+  content: "😃";
+}
+
+input[id^=f]:checked ~ input[id^=f]:checked ~ .infos .counter:before {
+  content: "🤓";
+}
+
+input[id^=f]:checked ~ .infos .counter:before {
+  content: "😕";
+}
+
+input[id^=f]:checked ~ input[id^=f]:checked ~ .infos .counter:before {
+  content: "😒";
+}
+
+.grid label:nth-child(1):before {
+  content: "💣";
+  font-size: 0.75rem;
+}
+
+#c1:checked ~ .grid .error {
+  opacity: 1;
+  visibility: visible;
+}
+
+#c1:checked ~ .grid > label:after {
+  visibility: hidden;
+}
+
+#c1:checked ~ .grid label:nth-child(1) {
+  background-color: #f00;
+}
+
+#c1:checked ~ .grid:active ~ .infos .timer .digit, #c1:checked ~ .grid:active ~ .infos .timer .digit:after {
+  animation: none;
+}
+
+#c1:checked ~ .infos .counter:before {
+  content: "😣" !important;
+}
+
+#c1:checked ~ .infos .timer .digit, #c1:checked ~ .infos .timer .digit:after {
+  animation-play-state: paused;
+}
+
+.grid label:nth-child(2):before {
+  content: "1";
+  color: #0000ff;
+}
+
+#f1:checked ~ #f2:not(:checked) ~ .grid > label:after {
+  visibility: hidden;
+}
+
+#f1:checked ~ #f2:not(:checked) ~ .grid .victory {
+  opacity: 1;
+  visibility: visible;
+}
+
+#f1:checked ~ #f2:not(:checked) ~ .grid:active ~ .infos .timer .digit, #f1:checked ~ #f2:not(:checked) ~ .grid:active ~ .infos .timer .digit:after {
+  animation: none;
+}
+
+#f1:checked ~ #f2:not(:checked) ~ .infos .counter:before {
+  content: "😎";
+}
+
+#f1:checked ~ #f2:not(:checked) ~ .infos .timer .digit, #f1:checked ~ #f2:not(:checked) ~ .infos .timer .digit:after {
+  animation-play-state: paused;
+}
+
+#f1:checked ~ .grid label:nth-child(1):after {
+  content: "🚩";
+  pointer-events: none;
+  visibility: visible !important;
+}
+
+#f1:checked ~ #modeFlag:checked ~ .grid .flags label:nth-child(1):after {
+  pointer-events: auto;
+}
+
+#c1:checked ~ .grid label:nth-child(1):after {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+#f2:checked ~ .grid label:nth-child(2):after {
+  content: "🚩";
+  pointer-events: none;
+  visibility: visible !important;
+}
+
+#f2:checked ~ #modeFlag:checked ~ .grid .flags label:nth-child(2):after {
+  pointer-events: auto;
+}
+
+#c2:checked ~ .grid label:nth-child(2):after {
+  pointer-events: none;
+  visibility: hidden;
+}

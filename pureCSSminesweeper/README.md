@@ -120,6 +120,7 @@ This doesn't get quite as complicated with scale. Instead of having more complic
 <p align="center">
   <img width=600px  src="https://imgur.com/s2nDh2z.png">
 </p>
+
 To count the number of remaining flags. CSS has support for [counters](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters), generally used to number headings for example.
 
 The total number of mines is hard-coded as the starting position of the counter. The counter is decremented by selecting all the flag checkboxes that are selected and decrementing the counter by one for each.

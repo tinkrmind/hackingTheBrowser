@@ -1,0 +1,19 @@
+{
+   "manifest_version": 2,
+   "name": "HTB Extensoin",
+   "version": "0.1",
+
+   "description": "This is an in class exercise to make an extension. Hacking the Browser Spring 2018.",
+
+   "browser_action":{
+     "default_popup": "popup.html"
+   },
+
+   "content_scripts":[
+     {
+       "matches": ["<all_urls>"],
+       /*"matches": ["*://github.com/*"],*/
+       "js": ["jquery.js", "myscript.js"]
+     }
+   ]
+}

@@ -1,0 +1,52 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#topBar{
+	font-family: 'Roboto', sans-serif;
+	color:#ffffff;
+	font-size: 250%;
+	text-align: center;
+	position: static;
+	top: 0;
+	width: 100%;
+	margin:  0 0 10px 0;
+	padding: 10px;
+	background: #3B5998;
+}
+
+#form{
+	font-family: 'Roboto', sans-serif;
+	color:#ffffff;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	margin: 5 auto;
+	padding: 5px;
+	background: #3B5998;
+}
+#form:hover {
+	background: #91ab3b;
+}
+
+#bottomRight{
+	color:#ffffff;
+	position: fixed;
+	bottom: 0;
+	float:right;
+}
+
+.personRecord{
+	float: left;
+	width: 105px;
+	height: 140px;
+	margin: 5 auto;
+	text-align: center;
+	/*padding-right: 20px;*/
+}
+
+.personName{
+	text-align: center;
+}

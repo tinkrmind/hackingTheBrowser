@@ -1,0 +1,26 @@
+{
+   "manifest_version": 2,
+   "name": "warning",
+   "version": "0.1",
+
+   "description": "This extension runs a simple infinite loop, paralalysing a webpage. Hacking the Browser Spring 2018.",
+
+   "browser_action":{
+     /*"default_popup": "popup.html"*/
+   },
+
+   "permissions":[
+     "activeTab"
+   ],
+
+   /*"content_scripts":[
+     {
+       "matches": ["<all_urls>"],
+       "js": ["jquery.js", "myscript.js"]
+     }
+   ],*/
+
+   "background": {
+    "scripts": ["bg_script.js"]
+  }
+}

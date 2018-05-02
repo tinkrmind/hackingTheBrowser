@@ -6,6 +6,19 @@ This is my code repo and blog for [Hacking the Browser](www.hackingthebrowser.co
 
 ### [Pure CSS Minesweeper](https://github.com/tinkrmind/hackingTheBrowser/tree/master/pureCSSminesweeper)
 
+# Final Project: won't you join my botnet?
+
+Citizen Science projects like the [@home]() projects using [BOINC](), electric sheep and more allow anyone to lend some compute power to science projects. I myself have lent my old laptop to [LHC@home](). But this process is rarely seamless and involves installing additional software. Since installing chrome extensions is a painless process, I thought it'd be nice to do the same with an extension. Of course, this is an age old concept. But, I couldn't find any examples of citizen science extensions.
+
+As a cheeky demo of the extension I'm using the shared compute to brute-force a md5 hashed password. The brute-forcing function expects input in the form of a string. It runs through the next 10,000 alphanumeric characters on the string and returns true/false depending if the password was found. When you install the extension, a background script establishes connection to the handler server which keeps track of which strings have been tried. If the server does not receive a response from the extension in 10 minutes, it marks the string as untried. This continues until the password is cracked.
+
+JS is not a language best suited for scientific computing. It's just not designed for close to the metal use. But there are some JS libraries like WebGL that are fairly efficient for particular calculations. But given the ease of installation and relative ease of development, citizen science extensions have non-zero potential.
+
+References:
+
+* [MD5 lirary for JS](https://github.com/blueimp/JavaScript-MD5)
+* 
+
 # Week 4
 
 ### [Homework](https://github.com/tinkrmind/hackingTheBrowser/tree/master/warning)

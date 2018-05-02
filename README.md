@@ -17,7 +17,6 @@ JS is not a language best suited for scientific computing. It's just not designe
 References:
 
 * [MD5 lirary for JS](https://github.com/blueimp/JavaScript-MD5)
-* 
 
 # Week 4
 

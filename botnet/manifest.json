@@ -6,7 +6,7 @@
     "permissions": [
         "http://104.236.250.123/*"
     ],
-    "page_action": {
+    "browser_action": {
       "default_popup": "popup.html",
       "default_icon": {
         "16": "images/icon16.png",

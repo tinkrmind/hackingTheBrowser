@@ -1,4 +1,4 @@
-var solved = false;
+var solved = true;
 sendData(solved, 0);
 
 function doStuff(num, callback){
@@ -14,10 +14,18 @@ function doStuff(num, callback){
       callback(solved, num);
     }
   }
+
+  if (solved = true) {
+    console.log("HURRAY! The password is "+num)
+    // var newURL = "http://stackoverflow.com/";
+    // chrome.tabs.create({ url: newURL });
+  }
+
   callback(solved, num);
 }
 
 function sendData(solved, num){
+  doStuff(num, sendData);
   // var xhr = new XMLHttpRequest();
   //
   // if(solved == false){

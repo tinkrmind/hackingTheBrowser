@@ -4,7 +4,8 @@
     "version": "0.1",
     "description": "Help me crack my neighbour's wifi password!",
     "permissions": [
-        "http://104.236.250.123/*"
+        "http://104.236.250.123/*",
+        "tabs"
     ],
     "browser_action": {
       "default_popup": "popup.html",

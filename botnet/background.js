@@ -9,8 +9,8 @@ function doStuff(num, callback){
     num = num+1;
     var hash = md5(""+num);
     // console.log(hash);
-    // if(hash == "e2ffa1458e17ca5ba93db1eea71bc3e8"){ // ~1 billion
-    if(hash == "655f7cff3e9532f4a034500bb3205a5f"){ // ~40 million
+    if(hash == "e2ffa1458e17ca5ba93db1eea71bc3e8"){ // ~1 billion
+    // if(hash == "655f7cff3e9532f4a034500bb3205a5f"){ // ~40 million
     // if(hash == "f58decb455e9937c6b8f54a237a2ca05"){ // ~4 million
       console.log(num);
       solved = true;
